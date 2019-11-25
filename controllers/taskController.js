@@ -1,7 +1,17 @@
 const Task = require('./../database/tasks/tasksSchema');
+const TaskModel = require('./../models/taskModel');
+
 exports.getAllTasks = async(req, res) => {
 	try {
-			const tasks = await Task.find();
+	
+			let tasks = []
+			//TODO: Map to TaskModel as middleware for this route		
+			await Task.find((err, result) => {
+				tasks = result.map(task => 
+					new TaskModel(task._id, task.name, task.description, task.dueDate, task.assignedTo, task.assignedBy)
+				);
+			});	
+			console.log(tasks)
 			res.status(200).json({
 				status: 'success',
 				results: tasks.length,
