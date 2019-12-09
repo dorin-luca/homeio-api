@@ -1,9 +1,11 @@
-class TaskModel {
+const Model = require('./model');
+
+class TaskModel extends Model {
 	constructor(id, name, description, dueDate, assignedTo, assignedBy) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.duteDate = dueDate;
+		this.dueDate = dueDate;
 		this.assignedTo = assignedTo;
 		this.assignedBy = assignedBy;
 	}
