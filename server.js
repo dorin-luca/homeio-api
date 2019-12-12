@@ -18,7 +18,7 @@ mongoose
   })
   .then(() => 'DB connection sucesfull');
 
-
 app.listen(port, () => {
-	console.log(`Server is running on port: ${port}`);
-})
+  // eslint-disable-next-line no-console
+  console.log(`Server is running on port: ${port}`);
+});
