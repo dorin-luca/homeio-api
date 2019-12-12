@@ -43,6 +43,10 @@ const taskSchema = new mongoose.Schema({
   setReminder: {
     type: Boolean,
     default: false
+  },
+  taskStatusId: {
+    type: Number,
+    required: true
   }
 });
 
