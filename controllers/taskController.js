@@ -7,30 +7,31 @@ exports.getAllTasks = async (req, res) => {
     let tasks = [];
 
     await Task.find((err, result) => {
-      tasks = mapper.mapDataToModel(result, value => {
-        return new TaskModel(
-          value._id,
-          value.name,
-          value.description,
-          value.dueDate,
-          value.assignedTo,
-          value.assignedBy
-        );
-      });
-
+      tasks = mapper.mapDataToModel(
+        result,
+        value =>
+          new TaskModel(
+            value._id,
+            value.name,
+            value.description,
+            value.dueDate,
+            value.assignedTo,
+            value.assignedBy,
+          ),
+      );
       return tasks;
     });
 
     res.status(200).json({
       status: 'success',
       results: tasks.length,
-      data: tasks
+      data: tasks,
     });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
       message: 'Could not get tasks',
-      error: err
+      error: err,
     });
   }
 };
@@ -38,15 +39,16 @@ exports.getAllTasks = async (req, res) => {
 exports.getTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
+
     res.status(200).json({
       status: 'success',
-      data: task
+      data: task,
     });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
       message: 'Could not get task',
-      error: err
+      error: err,
     });
   }
 };
@@ -57,13 +59,13 @@ exports.createTask = async (req, res) => {
 
     res.status(200).json({
       status: 'success',
-      data: task.id
+      data: task.id,
     });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
       message: 'Could not create task',
-      error: err
+      error: err,
     });
   }
 };
@@ -74,13 +76,13 @@ exports.updateTask = async (req, res) => {
 
     res.status(200).json({
       status: 'success',
-      data: task.id
+      data: task.id,
     });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
       message: 'Could not update task',
-      error: err
+      error: err,
     });
   }
 };
@@ -91,13 +93,13 @@ exports.deleteTask = async (req, res) => {
 
     res.status(200).json({
       status: 'success',
-      data: null
+      data: null,
     });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
       message: 'Could not delete task',
-      error: err
+      error: err,
     });
   }
 };

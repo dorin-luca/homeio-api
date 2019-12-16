@@ -11,18 +11,18 @@ exports.getAllTaskStatuses = async function(req, res) {
         value._id,
         value.name,
         value.weight,
-        value.urgency
+        value.urgency,
       );
     });
 
     res.status(200).json({
-      resulsts: taskStatuses.length,
-      data: taskStatuses
+      results: taskStatuses.length,
+      data: taskStatuses,
     });
   } catch (err) {
     res.status(500).json({
       message: 'Could not get all task statuses',
-      error: err
+      error: err,
     });
   }
 };
@@ -36,28 +36,28 @@ exports.getTaskStatus = async function(req, res) {
         taskStatus.id,
         taskStatus.name,
         taskStatus.weight,
-        taskStatus.urgency
-      )
+        taskStatus.urgency,
+      ),
     });
   } catch (err) {
     res.status(500).json({
       message: 'Could not get Task Status',
-      error: err
+      error: err,
     });
   }
 };
 
 exports.createTaskStatus = async function(req, res) {
   try {
-    const newStatus = TaskStatus.create(req.body);
+    const newStatus = await TaskStatus.create(req.body);
 
     res.status(200).json({
-      data: newStatus._id
+      data: newStatus._id,
     });
   } catch (error) {
     res.status(500).json({
       message: 'Could not create Status',
-      error: error
+      error: error,
     });
   }
 };
@@ -70,7 +70,7 @@ exports.updateTaskStatus = async function(req, res) {
   } catch (err) {
     res.status(500).json({
       message: 'Could not update task status',
-      error: err
+      error: err,
     });
   }
 };
@@ -83,7 +83,7 @@ exports.deleteTaskStatus = async function(req, res) {
   } catch (err) {
     res.status(500).json({
       message: 'Could not delete task status',
-      error: err
+      error: err,
     });
   }
 };

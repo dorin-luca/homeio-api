@@ -14,7 +14,7 @@ mongoose
   .connect(connectionString, {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   })
   .then(() => 'DB connection sucesfull');
 

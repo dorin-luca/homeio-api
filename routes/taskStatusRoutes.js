@@ -1,7 +1,7 @@
 const express = require('express');
 const taskStatusController = require('./../controllers/taskStatusController');
 
-const router = express.Router();
+const router = express();
 
 router
   .route('/')

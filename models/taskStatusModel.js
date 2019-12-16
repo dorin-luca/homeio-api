@@ -1,12 +1,11 @@
 const Model = require('./model');
 
 class TaskStatusModel extends Model {
-  constructor(id, name, weight, urgencyType) {
+  constructor(id, name, weight, priority) {
     super(id);
-
     this.name = name;
     this.weight = weight;
-    this.urgencyType = urgencyType;
+    this.priority = priority;
   }
 }
 
